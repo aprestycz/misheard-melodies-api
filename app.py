@@ -103,10 +103,11 @@ def delete_lyric(lyric_id):
     db.session.commit()
     return jsonify({'message': 'Lyric deleted'})
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # Creates the lyrics.db file and the necessary tables
-    app.run(debug=True)
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Get Render's assigned port
+    app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
